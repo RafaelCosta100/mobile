@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, Button, Switch, } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Button, Switch, Alert } from 'react-native';
 
 import { Picker } from '@react-native-picker/picker';
 import Slider from '@react-native-community/slider';
@@ -27,18 +27,8 @@ class App extends Component {
             alert('Digite seu nome');
             return;
         }
-        let estadoCivil = this.state.status ? "Casado(a)" : "Solteiro(a)";
-        let sexoSelecionado = this.state.sexos[this.state.sexo].nome;
-
-      
-        alert(
-            'Conta criada com sucesso!\n\n' + 
-            'Nome: ' + this.state.input + '\n' +
-            'Sexo: ' + sexoSelecionado + '\n' +
-            'Limite Escolhido: R$ ' + this.state.valor.toFixed(2) + '\n' +
-            'Estado Civil: ' + estadoCivil
-        );
-               
+        this.setState({ nome: 'Conta criada ' + this.state.input });
+        Alert.alert('Informações aqui');
     }
 
     render() {
@@ -102,7 +92,7 @@ class App extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 30 
+        marginTop: 30 // Adicionado um marginTop para não ficar colado no topo da tela
     },
     input: {
         height: 45,
@@ -118,7 +108,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 25,
     },
-    
+    // 3. Adicionado estilo para o 'logo' que faltava
     logo: {
         textAlign: 'center',
         fontSize: 20,
